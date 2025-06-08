@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_URL = "http://127.0.0.1:8000"  # Your local FastAPI
+API_URL = "https://wapp-dpy4.onrender.com"  # Your local FastAPI
 
 st.title("📋 Live Manager - Task App")
 
