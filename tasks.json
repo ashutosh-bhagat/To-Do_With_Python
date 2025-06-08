@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Build class version",
+        "done": false
+    },
+    {
+        "title": "Design architecture",
+        "done": true
+    },
+    {
+        "title": "The App is building....",
+        "done": false
+    },
+    {
+        "title": "Build the App",
+        "done": true
+    }
+]
