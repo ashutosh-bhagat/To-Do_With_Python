@@ -2,7 +2,7 @@
 
 <div align="center">
 
-# WAPP
+# To-Do App
 
 *Empower your productivity, streamline your task management.*
 
