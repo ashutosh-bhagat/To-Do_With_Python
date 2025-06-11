@@ -1,35 +1,59 @@
 import streamlit as st
 import requests
 
-API_URL = "https://wapp-dpy4.onrender.com"
+API_URL = "https://wapp-dpy4.onrender.com"  # Your FastAPI backend URL
+
+# --- Session State ---
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+    st.session_state.username = ""
+
 
 st.title("📋 Live Manager - Task App")
 
-# --- Task Input ---
-st.header("➕ Add New Task")
-task_input = st.text_input("Task title", key="task_input")
+# --- Auth Section ---
+st.subheader("Login / Signup")
 
-if st.button("Add Task"):
-    if task_input.strip():
-        response = requests.post(f"{API_URL}/tasks", json={"title": task_input})
-        if response.status_code == 200:
+auth_mode = st.radio("Choose action:", ["Login", "Signup"], horizontal=True)
+username = st.text_input("Username")
+password = st.text_input("Password", type="password")
+
+if st.button(auth_mode):
+    if not username or not password:
+        st.warning("Please enter both username and password.")
+    else:
+        endpoint = f"{API_URL}/login" if auth_mode == "Login" else f"{API_URL}/signup"
+        res = requests.post(endpoint, json={"username": username, "password": password})
+
+        if res.status_code == 200:
+            st.success(f"{auth_mode} successful!")
+            st.session_state.logged_in = True
+            st.session_state.username = username
+            st.rerun()
+        else:
+            st.error(res.json().get("detail", "Something went wrong."))
+
+
+# --- Main Task App ---
+if st.session_state.logged_in:
+    st.header(f"Welcome, {st.session_state.username}! 👋")
+
+    # --- Add Task ---
+    st.subheader("Add New Task")
+    task_input = st.text_input("Task title")
+
+    if st.button("Add Task"):
+        if task_input.strip() != "":
+            response = requests.post(f"{API_URL}/tasks", json={"title": task_input})
             st.success("✅ Task added successfully!")
             st.rerun()
         else:
-            st.error("❌ Failed to add task.")
-    else:
-        st.warning("⚠️ Task title can't be empty.")
+            st.warning("Task title can't be empty.")
 
-# --- List Tasks ---
-st.header("🧾 Your Tasks")
+    # --- List Tasks ---
+    st.subheader("🧾 Your Tasks")
+    tasks = requests.get(f"{API_URL}/tasks").json()
 
-try:
-    response = requests.get(f"{API_URL}/tasks")
-    response.raise_for_status()
-    tasks = response.json()
-
-    if not tasks:
-        st.info("No tasks yet. Add one above!")
     for idx, task in enumerate(tasks):
         col1, col2, col3 = st.columns([6, 1, 1])
         with col1:
@@ -45,7 +69,5 @@ try:
                 requests.delete(f"{API_URL}/tasks/{idx}")
                 st.rerun()
 
-except requests.exceptions.RequestException as e:
-    st.error(f"API Error: {e}")
-except ValueError:
-    st.error("Failed to decode JSON from the server. Check if the API is returning proper JSON.")
+else:
+    st.info("Please log in to use the task manager.")
