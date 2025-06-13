@@ -9,12 +9,15 @@
 <p>
   <img src="https://img.shields.io/github/last-commit/ashutosh-bhagat/WApp?color=blue&label=last%20commit&style=flat-square" alt="last commit">
   <img src="https://img.shields.io/badge/python-100%25-blue?style=flat-square" alt="python">
-  <img src="https://img.shields.io/badge/languages-1-blue?style=flat-square" alt="languages">
+  <img src="https://img.shields.io/badge/languages-2-blue?style=flat-square" alt="languages">
 </p>
 
 **Built with the tools and technologies:**
 
 <p>
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
   <img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON">
   <img src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white" alt="Markdown">
   <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
@@ -36,6 +39,8 @@
   • [Installation](#installation)
 
 • [Usage](#usage)
+
+• [Frontend](#frontend)
 
 • [Testing](#testing)
 
@@ -59,7 +64,7 @@ This project enhances collaboration and productivity by providing a structured a
 
 • 📋 **Structured Task Management**: Track project milestones and deliverables using a clear JSON format.
 
-• 🎯 **User-Friendly Interface**: Manage tasks in real-time with an intuitive interface that boosts productivity.
+• 🎯 **User-Friendly Interface**: Manage tasks in real-time with an intuitive interface that boosts productivity. The frontend is now built with **HTML, CSS, and JavaScript** for a modern, responsive experience.
 
 • ⚡ **High-Performance API**: Built on FastAPI, ensuring efficient handling of requests for seamless task operations.
 
@@ -77,6 +82,7 @@ This project requires the following dependencies:
 
 • **Programming Language**: Python 3.8+
 • **Package Manager**: Pip
+• **Web Browser**: Chrome, Firefox, Edge, etc.
 
 ### Installation
 
@@ -127,6 +133,18 @@ The FastAPI server will start at `http://localhost:8000`
 Once running, visit:
 - **Interactive API Docs**: `http://localhost:8000/docs`
 - **ReDoc Documentation**: `http://localhost:8000/redoc`
+
+---
+
+## Frontend
+
+The frontend is built with **HTML, CSS, and JavaScript** and is located in the `frontend/` directory.
+
+### How to use the frontend
+
+1. Make sure your FastAPI backend is running at `http://localhost:8000`.
+2. Open `frontend/index.html` in your web browser.
+3. You can now add, view, mark as done, and delete tasks in a modern UI.
 
 ---
 
@@ -212,7 +230,10 @@ GET    /stats              # Get task statistics
 ```
 WApp/
 ├── main.py                 # FastAPI application entry point
-├── to-do.py               # Task management core logic
+├── frontend/               # HTML, CSS, JS frontend
+│   ├── index.html
+│   ├── style.css
+│   └── app.js
 ├── tasks.json             # Task data storage
 ├── README.md              # Project documentation
 ├── requirements.txt       # Python dependencies
@@ -269,7 +290,7 @@ black .
 flake8 .
 
 # Type checking
-mypy main.py to-do.py
+mypy main.py
 ```
 
 ### Running in Development Mode
