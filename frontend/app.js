@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000"; // Changed to localhost for testing
+const API_URL = "https://wapp-dpy4.onrender.com"; // Changed to localhost for testing
 let currentUsername = localStorage.getItem('username') || '';
 
 // Check if user is already set on page load
