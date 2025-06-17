@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Frontend Test</title>
+    <link rel="stylesheet" href="frontend/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Frontend Test</h1>
+        
+        <section class="username-section">
+            <h2>👤 Enter Your Username</h2>
+            <input type="text" id="usernameInput" placeholder="Enter unique username">
+            <button onclick="setUsername()">Start Managing Tasks</button>
+        </section>
+        
+        <section id="taskSection" style="display: none;">
+            <div class="user-info">
+                <h2>Welcome, <span id="currentUser"></span>! 👋</h2>
+                <button onclick="changeUser()" class="change-user-btn">Change User</button>
+            </div>
+            
+            <section>
+                <h2>Add New Task</h2>
+                <input type="text" id="taskInput" placeholder="Task title">
+                <button onclick="addTask()">Add Task</button>
+            </section>
+            <section>
+                <h2>🧾 Your Tasks</h2>
+                <ul id="taskList"></ul>
+            </section>
+        </section>
+    </div>
+    <script src="frontend/app.js"></script>
+</body>
+</html> 
