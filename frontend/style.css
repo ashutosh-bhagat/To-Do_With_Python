@@ -11,6 +11,31 @@ body {
     border-radius: 12px;
     box-shadow: 0 0 20px #0004;
 }
+.username-section {
+    text-align: center;
+    margin-bottom: 2em;
+    padding: 1em;
+    background: #2d2e36;
+    border-radius: 8px;
+}
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    background: #2d2e36;
+    border-radius: 8px;
+}
+.change-user-btn {
+    background: #4a90e2;
+    border: none;
+    padding: 0.3em 0.8em;
+    font-size: 0.9em;
+}
+.change-user-btn:hover {
+    background: #357abd;
+}
 input[type="text"] {
     width: 70%;
     padding: 0.5em;
